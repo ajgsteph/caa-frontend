@@ -46,10 +46,21 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+
+  --color-caa-primary: #F4EAD8;
+  --color-caa-secondary: #EADCC3;
+  --color-caa-cream: #F4EAD8;
+  --color-caa-cream-deep: #EADCC3;
+  --color-caa-terra: #B84A25;
+  --color-caa-terra-dark: #8C3516;
+  --color-caa-ink: #1C1410;
+  --color-caa-forest: #1F3A33;
+  --color-caa-gold: #C9932E;
+  --color-caa-muted: #6B5B4C;
 }
 
 :root {
-  --background: oklch(1 0 0);
+  --background: oklch(94.01% 0.026 82.38);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -129,5 +140,24 @@
   }
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  @media (min-width: 1280px) {
+    .container {
+      max-width: 1200px!important;
+      padding-right: 2rem!important;
+      padding-left: 2rem!important;
+    }
   }
 }
