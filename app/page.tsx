@@ -8,7 +8,7 @@ import CustomButton from "@/components/custom-ui/custom-button";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col font-sans">
+    <div className="min-h-screen w-full flex flex-col font-sans">
       <Header />
 
       <main className="flex-grow">
