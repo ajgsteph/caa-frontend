@@ -40,7 +40,7 @@ export function Header() {
         if (isConnected) {
             return (
                 <div className="hidden lg:flex items-center gap-4">
-                    {/* <span className="text-sm text-caa-muted">
+                    {/* <span className="text-sm text-certifia-muted">
                         {session?.user?.artistName || session?.user?.firstName}
                     </span> */}
                     <CustomButton
@@ -88,7 +88,7 @@ export function Header() {
 
     return (
         <>
-            <header className="border-b border-caa-terra/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+            <header className="border-b border-certifia-terra/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
                 <div className="container h-20 flex items-center justify-between">
 
                     <Link href="/" className="flex items-center gap-3 relative z-50">
@@ -96,7 +96,7 @@ export function Header() {
                         <span className="font-serif font-semibold text-xl tracking-tight">Certifia</span>
                     </Link>
 
-                    <nav className="hidden lg:flex items-center gap-8 text-md font-medium text-caa-muted">
+                    <nav className="hidden lg:flex items-center gap-8 text-md font-medium text-certifia-muted">
                         {navLinks.map((link) => (
                             <Link key={link.name} href={link.href} className="hover:text-foreground transition-colors">
                                 {link.name}

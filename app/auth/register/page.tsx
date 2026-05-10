@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import DecorativeCorners from "@/components/custom-ui/decorative-corners";
 
 export const metadata: Metadata = {
-  title: "Créer un compte — CAA",
-  description: "Inscrivez-vous en tant qu'artiste sur la plateforme CAA",
+  title: "Créer un compte — Certifia",
+  description: "Inscrivez-vous en tant qu'artiste sur la plateforme Certifia",
 };
 
 export default function RegisterPage() {
@@ -14,7 +14,7 @@ export default function RegisterPage() {
         {/* En-tête */}
         <div className="mb-8 text-center">
           <h1 className="text-2xl font-bold tracking-tight text-gray-900">
-            Rejoindre CAA
+            Rejoindre Certifia
           </h1>
           <p className="mt-2 text-sm text-gray-500">
             Créez votre compte artiste et commencez à certifier vos œuvres

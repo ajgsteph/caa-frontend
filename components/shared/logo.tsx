@@ -19,7 +19,7 @@ export function Logo({ className = "w-10 h-10" }: { className?: string }) {
                 <line x1="10" y1="50" x2="14" y2="50" />
                 <line x1="86" y1="50" x2="90" y2="50" />
             </g>
-            <text x="50" y="58" textAnchor="middle" className="font-serif italic font-medium text-2xl" fill="currentColor" letterSpacing="-1">Caa</text>
+            <text x="50" y="58" textAnchor="middle" className="font-serif italic font-medium text-2xl" fill="currentColor" letterSpacing="-1">Certifia</text>
             <text x="50" y="75" textAnchor="middle" className="font-sans text-[5px] font-semibold" fill="currentColor" letterSpacing="3">CERTIFIÉ • AUTHENTIQUE</text>
         </svg>
     );
