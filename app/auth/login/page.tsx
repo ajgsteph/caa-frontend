@@ -1,5 +1,6 @@
 import { LoginForm } from "@/components/auth/login-form";
 import type { Metadata } from "next";
+import DecorativeCorners from "@/components/custom-ui/decorative-corners";
 
 export const metadata: Metadata = {
   title: "Connexion — CAA",
@@ -22,9 +23,7 @@ export default function LoginPage() {
 
         {/* Carte formulaire */}
         <div className="relative rounded-none border border-gray-200 bg-white p-8 shadow-sm">
-          {/* Coins décoratifs */}
-          <div className="absolute top-4 left-4 w-6 h-6 border-t border-l border-caa-terra" />
-          <div className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-caa-terra" />
+          <DecorativeCorners />
           <LoginForm />
         </div>
       </div>

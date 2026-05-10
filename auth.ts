@@ -27,10 +27,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           const loginResponse = await authApi.login(parsed.data);
           token = loginResponse.token;
         } catch (error) {
-          if (error instanceof ApiError) {
-            throw new Error(error.message);
-          }
-          throw new Error("Erreur de connexion. Réessayez plus tard.");
+          const message =
+            error instanceof ApiError
+              ? error.message
+              : error instanceof Error
+                ? error.message
+                : "Erreur de connexion. Réessayez plus tard.";
+          console.error("[CAA][authorize] login failed:", message, error);
+          throw new Error(message);
         }
 
         // 3. Appel profil avec le token fraîchement obtenu
@@ -39,9 +43,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         try {
           const profileResponse = await authApi.getProfile(token);
           profile = profileResponse.data;
-        } catch {
-          // Si le profil échoue (rare), on continue avec les données minimales
-          // pour ne pas bloquer la connexion
+        } catch (error) {
+          console.error("[CAA][authorize] getProfile failed:", error);
+          // Si le profil échoue, on continue avec les données minimales
           profile = {
             id: 0,
             last_name: "",
@@ -80,13 +84,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async jwt({ token, user }) {
       if (user) {
         const sessionUser = user as unknown as SessionUser;
-        token.id            = sessionUser.id;
-        token.email         = sessionUser.email;
-        token.firstName     = sessionUser.firstName;
-        token.lastName      = sessionUser.lastName;
-        token.artistName    = sessionUser.artistName;
-        token.roles         = sessionUser.roles;
-        token.sanctumToken  = sessionUser.sanctumToken;
+        token.id = sessionUser.id;
+        token.email = sessionUser.email;
+        token.firstName = sessionUser.firstName;
+        token.lastName = sessionUser.lastName;
+        token.artistName = sessionUser.artistName;
+        token.roles = sessionUser.roles;
+        token.sanctumToken = sessionUser.sanctumToken;
       }
       return token;
     },
@@ -94,14 +98,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async session({ session, token }) {
       return {
         ...session,
+        // sanctumToken au niveau racine de la session — accessible via auth()
+        // côté serveur uniquement. Absent de session.user → jamais sérialisé
+        // vers le client par useSession() ou les Server Components publics.
+        sanctumToken: token.sanctumToken as string,
         user: {
-          id:         token.id         as number,
-          email:      token.email      as string,
-          firstName:  token.firstName  as string,
-          lastName:   token.lastName   as string,
+          id: token.id as number,
+          email: token.email as string,
+          firstName: token.firstName as string,
+          lastName: token.lastName as string,
           artistName: token.artistName as string,
-          roles:      token.roles      as SessionUser["roles"],
-          // sanctumToken intentionnellement absent — jamais exposé au client
+          roles: token.roles as SessionUser["roles"],
         },
       };
     },
@@ -110,7 +117,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   // ─── Pages personnalisées ───────────────────────────────────────────────────
   pages: {
     signIn: "/auth/login",
-    error:  "/auth/login",
+    error: "/auth/login",
   },
 
   // ─── Session ────────────────────────────────────────────────────────────────
