@@ -101,13 +101,13 @@ export function LoginForm() {
         <CustomButton
           text={isPending ? "Connexion en cours…" : "Se connecter"}
           disabled={isPending}
-          className="w-full bg-caa-terra hover:bg-caa-terra-dark text-white"
+          className="w-full bg-certifia-terra hover:bg-certifia-terra-dark text-white"
           onClick={() => form.handleSubmit(onSubmit)()}
         />
 
         <p className="text-center text-sm text-muted-foreground">
           Pas encore de compte ?{" "}
-          <Link href="/auth/register" className="font-medium text-caa-terra hover:text-caa-terra-dark underline underline-offset-4">
+          <Link href="/auth/register" className="font-medium text-certifia-terra hover:text-certifia-terra-dark underline underline-offset-4">
             Créer un compte
           </Link>
         </p>

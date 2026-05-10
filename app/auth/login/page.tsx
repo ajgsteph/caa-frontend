@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import DecorativeCorners from "@/components/custom-ui/decorative-corners";
 
 export const metadata: Metadata = {
-  title: "Connexion — CAA",
-  description: "Connectez-vous à votre espace artiste CAA",
+  title: "Connexion — Certifia",
+  description: "Connectez-vous à votre espace artiste Certifia",
 };
 
 export default function LoginPage() {
@@ -14,7 +14,7 @@ export default function LoginPage() {
         {/* En-tête */}
         <div className="mb-8 text-center">
           <h1 className="text-2xl font-bold tracking-tight text-gray-900">
-            Bienvenue sur CAA
+            Bienvenue sur Certifia
           </h1>
           <p className="mt-2 text-sm text-gray-500">
             Certificat d&apos;Authenticité Artiste — connectez-vous à votre espace

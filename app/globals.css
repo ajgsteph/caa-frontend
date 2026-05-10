@@ -47,16 +47,16 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
 
-  --color-caa-primary: #F4EAD8;
-  --color-caa-secondary: #EADCC3;
-  --color-caa-cream: #F4EAD8;
-  --color-caa-cream-deep: #EADCC3;
-  --color-caa-terra: #B84A25;
-  --color-caa-terra-dark: #8C3516;
-  --color-caa-ink: #1C1410;
-  --color-caa-forest: #1F3A33;
-  --color-caa-gold: #C9932E;
-  --color-caa-muted: #6B5B4C;
+  --color-certifia-primary: #F4EAD8;
+  --color-certifia-secondary: #EADCC3;
+  --color-certifia-cream: #F4EAD8;
+  --color-certifia-cream-deep: #EADCC3;
+  --color-certifia-terra: #B84A25;
+  --color-certifia-terra-dark: #8C3516;
+  --color-certifia-ink: #1C1410;
+  --color-certifia-forest: #1F3A33;
+  --color-certifia-gold: #C9932E;
+  --color-certifia-muted: #6B5B4C;
 }
 
 :root {

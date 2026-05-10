@@ -62,7 +62,7 @@ export const authApi = {
       method: "POST",
       body: JSON.stringify({
         ...credentials,
-        device_name: "CAA Web",
+        device_name: "Certifia Web",
       }),
     }),
 

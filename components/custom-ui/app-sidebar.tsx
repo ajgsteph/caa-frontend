@@ -96,7 +96,7 @@ export function AppSidebar() {
                     <SidebarMenuItem>
                         <SidebarMenuButton size="lg">
                             <Link href="/dashboard" className="flex items-center gap-3 w-full h-full">
-                                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-caa-terra text-white">
+                                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-certifia-terra text-white">
                                     <GalleryVerticalEnd className="size-4" />
                                 </div>
                                 <div className="flex flex-col gap-0.5 leading-none">
@@ -137,7 +137,7 @@ export function AppSidebar() {
                                                         <SidebarMenuSubItem key={subItem.title}>
                                                             <Link
                                                                 href={subItem.url}
-                                                                className={`flex items-center gap-2 w-full rounded-sm p-2 text-sm transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground ${isSubActive ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium" : "text-muted-foreground"
+                                                                className={`flex items-center gap-2 w-full rounded-none p-2 text-sm transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground ${isSubActive ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium" : "text-muted-foreground"
                                                                     }`}
                                                             >
                                                                 <span>{subItem.title}</span>
@@ -151,7 +151,7 @@ export function AppSidebar() {
                                 </Collapsible>
                             ) : (
                                 <SidebarMenuItem key={item.title}>
-                                    <SidebarMenuButton tooltip={item.title} isActive={pathname === item.url} className="rounded-sm">
+                                    <SidebarMenuButton tooltip={item.title} isActive={pathname === item.url} className={"rounded-none " + (pathname === item.url ? "bg-certifia-terra/90! text-white!" : "")}>
                                         <Link href={item.url} className="flex items-center gap-2 w-full h-full">
                                             {item.icon && <item.icon className="size-4" />}
                                             <span>{item.title}</span>
@@ -172,7 +172,7 @@ export function AppSidebar() {
                                 <div className="flex w-full items-center gap-2 p-2 rounded-md hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors">
                                     <Avatar className="h-8 w-8 rounded-lg">
                                         <AvatarImage src={data.user.avatar} alt={data.user.name} />
-                                        <AvatarFallback className="rounded-lg bg-caa-primary text-caa-ink font-semibold">
+                                        <AvatarFallback className="rounded-lg bg-certifia-primary text-certifia-ink font-semibold">
                                             {data.user.name.substring(0, 2).toUpperCase()}
                                         </AvatarFallback>
                                     </Avatar>
@@ -193,7 +193,7 @@ export function AppSidebar() {
                                 <div className="flex items-center gap-2 px-2 py-2 text-left text-sm">
                                     <Avatar className="h-8 w-8 rounded-lg">
                                         <AvatarImage src={data.user.avatar} alt={data.user.name} />
-                                        <AvatarFallback className="rounded-lg bg-caa-primary text-caa-ink font-semibold">
+                                        <AvatarFallback className="rounded-lg bg-certifia-primary text-certifia-ink font-semibold">
                                             {data.user.name.substring(0, 2).toUpperCase()}
                                         </AvatarFallback>
                                     </Avatar>

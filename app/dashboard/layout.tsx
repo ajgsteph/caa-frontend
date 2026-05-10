@@ -31,17 +31,17 @@ export default async function DashboardLayout({
             <div className="mx-auto flex w-full items-center justify-between px-4 py-3">
               <div className="flex items-center gap-4">
                 <CustomSidebarTrigger />
-                {/* <span className="font-bold text-amber-600">CAA</span> */}
-                <span className="text-base text-gray-600 font-bold">
+                {/* <span className="font-bold text-amber-600">Certifia</span> */}
+                {/* <span className="text-base text-gray-600 font-bold">
                   Bienvenue, {session.user?.artistName}
-                </span>
+                </span> */}
               </div>
               <div className="flex items-center gap-4">
                 <DropdownMenu>
                   <DropdownMenuTrigger className="w-full rounded-none outline-none focus-visible:ring-2 focus-visible:ring-sidebar-ring">
                     <div className="flex w-full items-center gap-2 p-2 rounded-full hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors">
                       <Avatar className="h-8 w-8 rounded-full">
-                        <AvatarFallback className="rounded-full bg-caa-primary text-caa-ink font-semibold">
+                        <AvatarFallback className="rounded-full bg-certifia-primary text-certifia-ink font-semibold">
                           {session.user?.firstName.substring(0, 1).toUpperCase() + session.user?.lastName.substring(0, 1).toUpperCase()}
                         </AvatarFallback>
                       </Avatar>

@@ -31,7 +31,7 @@ export default function CustomButton({
   const buttonContent = (
     <Button
       className={cn(
-        "flex items-center gap-2 px-5 py-6 h-10 bg-transparent border border-caa-terra rounded-none text-gray-900 font-bold hover:bg-caa-terra hover:text-white shadow-none transition-colors",
+        "flex items-center gap-2 px-5 py-6 h-10 bg-transparent border border-certifia-terra rounded-none text-gray-900 font-bold hover:bg-certifia-terra hover:text-white shadow-none transition-colors",
         className
       )}
       {...props}
