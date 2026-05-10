@@ -18,6 +18,7 @@ export type ActionResult =
 export async function loginAction(
   values: LoginFormValues
 ): Promise<ActionResult> {
+  // 1. Validation Zod côté serveur (défense en profondeur)
   const parsed = loginSchema.safeParse(values);
   if (!parsed.success) {
     return {
@@ -27,6 +28,7 @@ export async function loginAction(
     };
   }
 
+  // 2. Appel Auth.js signIn — déclenche authorize() dans auth.ts
   let authError: string | null = null;
 
   try {
@@ -36,8 +38,11 @@ export async function loginAction(
       redirect: false,
     });
   } catch (error: unknown) {
+    // redirect() de Next.js lance une exception interne — la laisser remonter
     if (isRedirectError(error)) throw error;
 
+    // Auth.js enveloppe l'erreur de authorize() dans une AuthError
+    // Le vrai message est dans error.cause?.err?.message
     const cause = (error as { cause?: { err?: { message?: string } } })?.cause;
     authError =
       cause?.err?.message ??
@@ -48,6 +53,7 @@ export async function loginAction(
     return { success: false, error: authError };
   }
 
+  // 3. Redirection après succès — hors du try/catch
   redirect("/dashboard");
 }
 
@@ -56,6 +62,7 @@ export async function loginAction(
 export async function registerAction(
   values: RegisterFormValues
 ): Promise<ActionResult> {
+  // 1. Validation Zod côté serveur
   const parsed = registerSchema.safeParse(values);
   if (!parsed.success) {
     return {
@@ -65,6 +72,7 @@ export async function registerAction(
     };
   }
 
+  // 2. Appel direct au backend pour créer le compte
   try {
     const { last_name, first_name, artist_name, email, password, phone } =
       parsed.data;
@@ -89,6 +97,7 @@ export async function registerAction(
     return { success: false, error: "Erreur lors de la création du compte." };
   }
 
+  // 3. Connexion automatique après inscription réussie
   try {
     await signIn("credentials", {
       email: parsed.data.email,
@@ -108,11 +117,8 @@ export async function registerAction(
 export async function logoutAction(): Promise<void> {
   const session = await auth();
 
-  if (session) {
-    const rawToken = (session as unknown as { sanctumToken?: string }).sanctumToken;
-    if (rawToken) {
-      await authApi.logout(rawToken).catch(() => { });
-    }
+  if (session?.sanctumToken) {
+    await authApi.logout(session.sanctumToken).catch(() => { });
   }
 
   await signOut({ redirectTo: "/auth/login" });

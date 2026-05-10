@@ -6,7 +6,8 @@ import { AppSidebar } from "@/components/custom-ui/app-sidebar"
 import { CustomSidebarTrigger } from "@/components/custom-ui/custom-sidebar-trigger"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { ChevronsUpDown, LogOut, User } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import Link from "next/link";
 
 export default async function DashboardLayout({
   children,
@@ -63,10 +64,12 @@ export default async function DashboardLayout({
                       </div>
                     </div>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem className="cursor-pointer rounded-none">
-                      <User className="mr-2 size-4" />
-                      Mon Profil
-                    </DropdownMenuItem>
+                    <Link href="/dashboard/profile">
+                      <DropdownMenuItem className="cursor-pointer rounded-none">
+                        <User className="mr-2 size-4" />
+                        Mon Profil
+                      </DropdownMenuItem>
+                    </Link>
                     <DropdownMenuSeparator />
                     <form action={logoutAction}>
                       <button type="submit" className="w-full">
@@ -81,7 +84,7 @@ export default async function DashboardLayout({
               </div>
             </div>
           </header>
-          <main className="mx-auto w-full px-6 py-4 bg-caa-primary/50 grow h-full">
+          <main className="mx-auto w-full bg-gray-100 px-6 py-4 grow h-full">
             {children}
           </main>
         </div>

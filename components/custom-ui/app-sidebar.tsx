@@ -100,10 +100,10 @@ export function AppSidebar() {
                                     <GalleryVerticalEnd className="size-4" />
                                 </div>
                                 <div className="flex flex-col gap-0.5 leading-none">
-                                    <span className="font-semibold text-sm">Caa Platform</span>
+                                    <span className="font-semibold text-sm">Certifia</span>
                                     <span className="text-xs text-muted-foreground">Artist Hub</span>
                                 </div>
-                                <ChevronsUpDown className="ml-auto size-4" />
+                                {/* <ChevronsUpDown className="ml-auto size-4" /> */}
                             </Link>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
