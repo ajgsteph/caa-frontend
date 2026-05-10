@@ -7,17 +7,17 @@ export function Hero() {
     <section className="py-20">
       <div className="container grid md:grid-cols-[1.1fr_0.9fr] gap-16 items-center">
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <Badge variant="secondary" className="mb-8 px-1 sm:px-4 py-3 text-[9px] sm:text-xs tracking-wider uppercase rounded-none bg-certifia-secondary border border-certifia-terra">
+          <Badge variant="secondary" className="mb-8 px-1 sm:px-4 py-3 text-[9px] sm:text-xs tracking-wider uppercase rounded-none bg-cert-secondary border border-cert-terra">
             <span className="w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full bg-foreground mr-1 md:mr-2" />
             Certification professionnelle pour artistes
           </Badge>
 
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
-            Chaque œuvre mérite son <em className="text-certifia-terra">sceau d'authenticité</em>.
+            Chaque œuvre mérite son <em className="text-cert-terra">sceau d'authenticité</em>.
           </h1>
 
-          <p className="text-lg text-certifia-muted max-w-lg mb-10 font-medium">
-            Certifia permet aux artistes africains de générer des certificats d'authenticité professionnels, vérifiables par QR code. Protégez votre signature, rassurez vos acheteurs.
+          <p className="text-lg text-cert-muted max-w-lg mb-10 font-medium">
+            Certifa permet aux artistes africains de générer des certificats d'authenticité professionnels, vérifiables par QR code. Protégez votre signature, rassurez vos acheteurs.
           </p>
 
           <div className="flex flex-wrap gap-4 items-center mb-5">

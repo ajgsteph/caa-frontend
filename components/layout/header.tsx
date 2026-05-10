@@ -40,7 +40,7 @@ export function Header() {
         if (isConnected) {
             return (
                 <div className="hidden lg:flex items-center gap-4">
-                    {/* <span className="text-sm text-certifia-muted">
+                    {/* <span className="text-sm text-cert-muted">
                         {session?.user?.artistName || session?.user?.firstName}
                     </span> */}
                     <CustomButton
@@ -88,15 +88,15 @@ export function Header() {
 
     return (
         <>
-            <header className="border-b border-certifia-terra/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+            <header className="border-b border-cert-terra/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
                 <div className="container h-20 flex items-center justify-between">
 
                     <Link href="/" className="flex items-center gap-3 relative z-50">
                         <Logo className="w-10 h-10 text-foreground" />
-                        <span className="font-serif font-semibold text-xl tracking-tight">Certifia</span>
+                        <span className="font-serif font-semibold text-xl tracking-tight">Certifa</span>
                     </Link>
 
-                    <nav className="hidden lg:flex items-center gap-8 text-md font-medium text-certifia-muted">
+                    <nav className="hidden lg:flex items-center gap-8 text-md font-medium text-cert-muted">
                         {navLinks.map((link) => (
                             <Link key={link.name} href={link.href} className="hover:text-foreground transition-colors">
                                 {link.name}
@@ -121,7 +121,7 @@ export function Header() {
                     <div className="container mx-auto px-6 h-20 flex items-center justify-between border-b border-border/10">
                         <Link href="/" className="flex items-center gap-3" onClick={() => setIsMobileMenuOpen(false)}>
                             <Logo className="w-10 h-10 text-foreground" />
-                            <span className="font-semibold text-xl tracking-tight">Certifia</span>
+                            <span className="font-semibold text-xl tracking-tight">Certifa</span>
                         </Link>
                         <button className="p-2 -mr-2 text-foreground" onClick={() => setIsMobileMenuOpen(false)} aria-label="Fermer le menu">
                             <X size={24} />

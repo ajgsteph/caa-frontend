@@ -25,7 +25,7 @@ export default function Dashboard() {
             {/* ─── HEADER GREETING ─── */}
             <div>
                 <h1 className="text-3xl font-bold tracking-tight">Hello, {session?.user?.artistName}</h1>
-                <p className="text-muted-foreground">Bienvenue sur votre espace artiste Certifia</p>
+                <p className="text-muted-foreground">Bienvenue sur votre espace artiste Certifa</p>
             </div>
 
             {/* ─── VERIFICATION ALERT ─── */}
@@ -68,7 +68,7 @@ export default function Dashboard() {
                     </CardHeader>
                     <CardContent>
                         <CustomButton
-                            className="w-full bg-certifia-terra hover:bg-certifia-terra/80 text-white"
+                            className="w-full bg-cert-terra hover:bg-cert-terra/80 text-white"
                             text="Nouvelle oeuvre"
                             icon={<Plus className="mr-2 h-4 w-4" />}
                         />
@@ -85,7 +85,7 @@ export default function Dashboard() {
                     </CardHeader>
                     <CardContent className="flex items-center gap-4">
                         <CustomButton
-                            className="flex-1 bg-transparent hover:bg-certifia-terra text-certifia-terra"
+                            className="flex-1 bg-transparent hover:bg-cert-terra text-cert-terra"
                             text="Nouveau certificat"
                             icon={<FileText className="mr-2 h-4 w-4" />}
                         />

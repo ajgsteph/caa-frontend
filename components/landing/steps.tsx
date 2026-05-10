@@ -8,15 +8,15 @@ export function Steps() {
     return (
         <section id="how" className="py-20 bg-secondary/90">
             <div className="container">
-                <div className="text-xs tracking-widest uppercase text-certifia-terra font-semibold mb-4">Trois étapes</div>
+                <div className="text-xs tracking-widest uppercase text-cert-terra font-semibold mb-4">Trois étapes</div>
                 <h2 className="text-4xl md:text-5xl font-semibold tracking-wide max-w-2xl mb-16">
-                    Du pinceau au certificat, en <em className="text-certifia-terra">quelques minutes</em>.
+                    Du pinceau au certificat, en <em className="text-cert-terra">quelques minutes</em>.
                 </h2>
 
                 <div className="grid md:grid-cols-3 gap-10">
                     {steps.map((step) => (
                         <div key={step.num} className="pt-8 border-t border-border/50">
-                            <div className="italic text-5xl text-certifia-terra mb-6 leading-none">{step.num}</div>
+                            <div className="italic text-5xl text-cert-terra mb-6 leading-none">{step.num}</div>
                             <h3 className="font-medium text-xl mb-3">{step.title}</h3>
                             <p className="text-muted-foreground text-sm leading-relaxed">{step.desc}</p>
                         </div>
