@@ -1,6 +1,7 @@
 "use server";
 
 import { auth } from "@/auth";
+import { revalidatePath } from "next/cache";
 import { profileApi } from "@/lib/api/profile.api";
 import {
     updateEmailSchema,
@@ -64,6 +65,7 @@ export async function updateEmailAction(
     try {
         const token = await getSanctumToken();
         await profileApi.updateEmail(token, parsed.data);
+        revalidatePath("/dashboard/profile");
         return { success: true, message: "Email mis à jour avec succès." };
     } catch (err) {
         return handleError(err);
@@ -87,6 +89,7 @@ export async function updatePasswordAction(
             current_password: parsed.data.current_password,
             password: parsed.data.password,
         });
+        revalidatePath("/dashboard/profile");
         return { success: true, message: "Mot de passe mis à jour avec succès." };
     } catch (err) {
         return handleError(err);
@@ -107,6 +110,7 @@ export async function updatePhoneAction(
     try {
         const token = await getSanctumToken();
         await profileApi.updatePhone(token, parsed.data);
+        revalidatePath("/dashboard/profile");
         return { success: true, message: "Téléphone mis à jour avec succès." };
     } catch (err) {
         return handleError(err);
