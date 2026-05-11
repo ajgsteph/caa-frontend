@@ -19,7 +19,7 @@ import type { Metadata } from "next";
 import DecorativeCorners from "@/components/custom-ui/decorative-corners";
 
 export const metadata: Metadata = {
-    title: "Mon profil — Certifia",
+    title: "Mon profil — Certifa",
 };
 
 export default async function ProfilePage() {
@@ -59,19 +59,19 @@ export default async function ProfilePage() {
                         >
                             <TabsTrigger
                                 value="email"
-                                className="flex-1 flex items-center gap-1.5 text-xs font-medium data-[state=active]:bg-certifia-terra rounded-none py-4">
+                                className="flex-1 flex items-center gap-1.5 text-xs font-medium data-[state=active]:bg-cert-terra rounded-none py-4">
                                 <Mail className="h-3.5 w-3.5" />
                                 Email
                             </TabsTrigger>
                             <TabsTrigger
                                 value="password"
-                                className="flex-1 flex items-center gap-1.5 text-xs font-medium data-[state=active]:bg-certifia-terra rounded-none py-4">
+                                className="flex-1 flex items-center gap-1.5 text-xs font-medium data-[state=active]:bg-cert-terra rounded-none py-4">
                                 <Lock className="h-3.5 w-3.5" />
                                 Mot de passe
                             </TabsTrigger>
                             <TabsTrigger
                                 value="phone"
-                                className="flex-1 flex items-center gap-1.5 text-xs font-medium data-[state=active]:bg-certifia-terra rounded-none py-4">
+                                className="flex-1 flex items-center gap-1.5 text-xs font-medium data-[state=active]:bg-cert-terra rounded-none py-4">
                                 <Phone className="h-3.5 w-3.5" />
                                 Téléphone
                             </TabsTrigger>

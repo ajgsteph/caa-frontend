@@ -82,7 +82,7 @@ export function UpdatePasswordForm() {
             <CustomButton
                 type="submit"
                 disabled={isPending}
-                className="w-fit font-medium transition-all bg-certifia-terra text-white"
+                className="w-fit font-medium transition-all bg-cert-terra text-white"
                 text={isPending ? "Mise à jour…" : "Changer le mot de passe"}
             />
 

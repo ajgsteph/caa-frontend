@@ -107,7 +107,7 @@ export function RegisterForm() {
         </div>
         <div className="h-2 w-full bg-secondary rounded-full overflow-hidden">
           <div 
-            className="h-full bg-certifia-terra transition-all duration-300 ease-in-out"
+            className="h-full bg-cert-terra transition-all duration-300 ease-in-out"
             style={{ width: `${(currentStep / STEPS.length) * 100}%` }}
           />
         </div>
@@ -159,7 +159,7 @@ export function RegisterForm() {
         </div>
 
         {/* Navigation multi-étape */}
-        <div className="flex gap-4 pt-2 justify-between">
+        <div className="flex flex-col md:flex-row gap-4 pt-2 justify-between">
           {currentStep > 1 && (
             <CustomButton 
               text="Précédent"
@@ -174,21 +174,21 @@ export function RegisterForm() {
               text="Suivant"
               onClick={nextStep}
               disabled={isPending}
-              className={"bg-certifia-terra hover:bg-certifia-terra-dark text-white" + (currentStep === 1 ? " w-full" : " w-fit")}
+              className={"bg-cert-terra hover:bg-cert-terra-dark text-white" + (currentStep === 1 ? " w-full" : " w-fit")}
             />
           ) : (
             <CustomButton 
               text={isPending ? "Création en cours…" : "Créer mon compte"}
               onClick={form.handleSubmit(onSubmit)}
               disabled={isPending}
-              className="w-fit bg-certifia-terra hover:bg-certifia-terra-dark text-white"
+              className="w-fit bg-cert-terra hover:bg-cert-terra-dark text-white"
             />
           )}
         </div>
 
         <p className="text-center text-sm text-muted-foreground">
           Déjà un compte ?{" "}
-          <Link href="/auth/login" className="font-medium text-certifia-terra hover:text-certifia-terra-dark underline underline-offset-4">
+          <Link href="/auth/login" className="font-medium text-cert-terra hover:text-cert-terra-dark underline underline-offset-4">
             Se connecter
           </Link>
         </p>

@@ -33,7 +33,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
               : error instanceof Error
                 ? error.message
                 : "Erreur de connexion. Réessayez plus tard.";
-          console.error("[Certifia][authorize] login failed:", message, error);
+          console.error("[Certifa][authorize] login failed:", message, error);
           throw new Error(message);
         }
 
@@ -44,7 +44,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           const profileResponse = await authApi.getProfile(token);
           profile = profileResponse.data;
         } catch (error) {
-          console.error("[Certifia][authorize] getProfile failed:", error);
+          console.error("[Certifa][authorize] getProfile failed:", error);
           // Si le profil échoue, on continue avec les données minimales
           profile = {
             id: 0,
