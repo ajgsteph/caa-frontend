@@ -68,8 +68,9 @@ export default function Dashboard() {
                     </CardHeader>
                     <CardContent>
                         <CustomButton
-                            className="w-full bg-cert-terra hover:bg-cert-terra/80 text-white"
+                            className="w-fit bg-cert-terra hover:bg-cert-terra/80 text-white"
                             text="Nouvelle oeuvre"
+                            href="/dashboard/my-works/new"
                             icon={<Plus className="mr-2 h-4 w-4" />}
                         />
                     </CardContent>
@@ -85,8 +86,9 @@ export default function Dashboard() {
                     </CardHeader>
                     <CardContent className="flex items-center gap-4">
                         <CustomButton
-                            className="flex-1 bg-transparent hover:bg-cert-terra text-cert-terra"
+                            className="flex-1! bg-transparent hover:bg-cert-terra text-cert-terra"
                             text="Nouveau certificat"
+                            href="/dashboard/certificates/new"
                             icon={<FileText className="mr-2 h-4 w-4" />}
                         />
                         <Badge variant="secondary" className="bg-[#F3F4F6] text-[#6B7280] font-normal rounded-none">
