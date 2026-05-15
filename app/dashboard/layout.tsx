@@ -9,13 +9,17 @@ import { ChevronsUpDown, LogOut, User } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import Link from "next/link";
 import { QueryProvider } from "@/providers/query-provider";
+import { TokenProvider } from "@/lib/helpers/use-token";
 
 export default async function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+
   const session = await auth();
+  
+  const token = (session as unknown as { sanctumToken?: string })?.sanctumToken ?? null;
 
   if (!session) {
     redirect("/auth/login");
@@ -23,6 +27,7 @@ export default async function DashboardLayout({
 
   return (
     <QueryProvider>
+      <TokenProvider token={token}>   
       <div className="min-h-screen bg-gray-50">
 
         <SidebarProvider>
@@ -92,6 +97,7 @@ export default async function DashboardLayout({
           </div>
         </SidebarProvider>
       </div>
+      </TokenProvider>
     </QueryProvider>
   );
 }

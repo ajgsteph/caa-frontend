@@ -3,10 +3,14 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import type { Metadata } from "next";
 import DecorativeCorners from "@/components/custom-ui/decorative-corners";
+import { auth } from "@/auth";
+
 
 export const metadata: Metadata = { title: "Nouvelle œuvre — CAA" };
 
-export default function NewArtworkPage() {
+export default async function NewArtworkPage() {
+    const session = await auth();
+    const token = (session as any)?.sanctumToken || null;
     return (
         <div className="max-w-3xl space-y-6">
             <div className="flex items-center gap-3">
@@ -30,7 +34,7 @@ export default function NewArtworkPage() {
 
             <div className="relative rounded-none border p-6 md:p-8 bg-white">
                 <DecorativeCorners />
-                <ArtworkForm />
+                <ArtworkForm token={token} />
             </div>
         </div>
     );
