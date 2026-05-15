@@ -24,10 +24,9 @@ import CustomButton from "../custom-ui/custom-button";
 interface ArtworkFormProps {
     artwork?: Artwork;
     onSuccess?: () => void;
-    token: string | null;
 }
 
-export function ArtworkForm({ artwork, onSuccess, token }: ArtworkFormProps) {
+export function ArtworkForm({ artwork, onSuccess }: ArtworkFormProps) {
     const router = useRouter();
     const isEditing = !!artwork;
     const createMut = useCreateArtwork();
