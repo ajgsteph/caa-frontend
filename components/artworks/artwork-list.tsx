@@ -6,6 +6,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { PlusCircle, ImageOff } from "lucide-react";
 import Link from "next/link";
 import CustomButton from "../custom-ui/custom-button";
+import { CustomSpinner } from "../custom-ui/custom-spinner";
 
 function ArtworkSkeleton() {
     return (
@@ -25,9 +26,12 @@ export function ArtworkList() {
 
     if (isLoading) {
         return (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {Array.from({ length: 6 }).map((_, i) => <ArtworkSkeleton key={i} />)}
-            </div>
+            // <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            //     {Array.from({ length: 6 }).map((_, i) => <ArtworkSkeleton key={i} />)}
+            // </div>
+
+            <CustomSpinner />
+
         );
     }
 

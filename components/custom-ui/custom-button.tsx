@@ -28,19 +28,27 @@ export default function CustomButton({
         hideTextBreakpoint === "lg" ? "hidden lg:inline" :
           hideTextBreakpoint === "xl" ? "hidden xl:inline" : "";
 
-  const buttonContent = (
-    <Button
-      className={cn(
-        "flex items-center gap-2 px-5 py-6 h-10 bg-transparent border border-cert-terra rounded-none text-gray-900 font-bold hover:bg-cert-terra hover:text-white shadow-none transition-colors",
-        className
-      )}
-      {...props}
-    >
+  const baseClasses = "flex items-center justify-center gap-2 px-3 h-10 bg-transparent border border-cert-terra rounded-none text-gray-900 font-bold hover:bg-cert-terra hover:text-white shadow-none transition-colors";
+
+  const content = (
+    <>
       {icon && iconPosition === "left" && icon}
-      <span className={hiddenClass}>{text}</span>
+      {text && <span className={cn("truncate", hiddenClass)}>{text}</span>}
       {icon && iconPosition === "right" && icon}
-    </Button>
+    </>
   );
 
-  return href ? <Link href={href}>{buttonContent}</Link> : buttonContent;
+  if (href) {
+    return (
+      <Link href={href} className={cn(baseClasses, className)}>
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <Button className={cn(baseClasses, className)} {...props}>
+      {content}
+    </Button>
+  );
 }

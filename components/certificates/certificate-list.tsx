@@ -5,6 +5,7 @@ import { CertificateCard } from "./certificate-card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { Award } from "lucide-react";
+import { CustomSpinner } from "@/components/custom-ui/custom-spinner";
 
 function CertSkeleton() {
     return (
@@ -32,9 +33,10 @@ export function CertificateList() {
 
     if (isLoading) {
         return (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {Array.from({ length: 4 }).map((_, i) => <CertSkeleton key={i} />)}
-            </div>
+            // <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            //     {Array.from({ length: 4 }).map((_, i) => <CertSkeleton key={i} />)}
+            // </div>
+            <CustomSpinner />
         );
     }
 

@@ -101,21 +101,20 @@ export function ArtworkCard({ artwork }: ArtworkCardProps) {
                 )}
 
                 {/* Actions */}
-                <div className="flex gap-2 pt-1">
+                <div className="flex w-full gap-2 pt-1">
                     <CustomButton
                         text="Modifier"
                         href={`/dashboard/my-works/${artwork.id}`}
-                        className="flex-1 bg-cert-terra text-white"
-                        icon={<Pencil className="h-3.5 w-3.5" />}
+                        className="flex-1 bg-cert-terra text-white min-w-0 px-2"
+                        icon={<Pencil className="h-3.5 w-3.5 shrink-0" />}
                     />
 
                     <AlertDialog>
-                        <AlertDialogTrigger>
-                            <div className="cursor-pointer border border-red-600 rounded gap-2 flex flex-row h-10 px-5 py-6 rounded-none items-center gap-1 text-red-600">
-                                <Trash2 className="h-5 w-5" />
-                                <span className="">Supprimer</span>
-                            </div>
+                        <AlertDialogTrigger className="flex-1 flex items-center justify-center gap-1.5 h-10 px-2 border border-red-600 text-cert-terra hover:bg-cert-terra hover:text-white transition-colors min-w-0 outline-none">
+                            <Trash2 className="h-4 w-4 shrink-0" />
+                            <span className="truncate font-bold text-sm">Supprimer</span>
                         </AlertDialogTrigger>
+
                         <AlertDialogContent className="rounded-none">
                             <AlertDialogHeader>
                                 <AlertDialogTitle>Supprimer cette œuvre ?</AlertDialogTitle>
@@ -128,7 +127,7 @@ export function ArtworkCard({ artwork }: ArtworkCardProps) {
                                 <AlertDialogCancel className="rounded-none">Annuler</AlertDialogCancel>
                                 <AlertDialogAction
                                     onClick={handleDelete}
-                                    className="bg-red-600 hover:bg-red-700 text-white rounded-none"
+                                    className="bg-cert-terra hover:bg-cert-terra/80 text-white rounded-none"
                                 >
                                     Supprimer définitivement
                                 </AlertDialogAction>

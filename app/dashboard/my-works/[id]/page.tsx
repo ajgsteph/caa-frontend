@@ -2,11 +2,11 @@
 
 import { useArtwork } from "@/lib/query/artworks.queries";
 import { ArtworkForm } from "@/components/artworks/artwork-form";
-import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { use } from "react";
 import DecorativeCorners from "@/components/custom-ui/decorative-corners";
+import { CustomSpinner } from "@/components/custom-ui/custom-spinner";
 
 interface EditArtworkPageProps {
     params: Promise<{ id: string }>;
@@ -18,16 +18,7 @@ export default function EditArtworkPage({ params }: EditArtworkPageProps) {
 
     if (isLoading) {
         return (
-            <div className="max-w-3xl space-y-6">
-                <Skeleton className="h-5 w-32" />
-                <Skeleton className="h-8 w-48" />
-                <div className="rounded-none border p-8 space-y-6">
-                    <Skeleton className="h-48 w-full rounded-xl" />
-                    <div className="grid grid-cols-2 gap-4">
-                        {Array.from({ length: 6 }).map((_, i) => <Skeleton key={i} className="h-10" />)}
-                    </div>
-                </div>
-            </div>
+            <CustomSpinner />
         );
     }
 

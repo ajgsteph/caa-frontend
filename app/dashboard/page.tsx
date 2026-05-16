@@ -20,7 +20,7 @@ import { useSession } from "next-auth/react"
 export default function Dashboard() {
     const { data: session } = useSession()
     return (
-        <div className="flex-1 space-y-4 pt-6">
+        <div className="flex-1 space-y-4">
 
             {/* ─── HEADER GREETING ─── */}
             <div>
@@ -68,7 +68,7 @@ export default function Dashboard() {
                     </CardHeader>
                     <CardContent>
                         <CustomButton
-                            className="w-fit bg-cert-terra hover:bg-cert-terra/80 text-white"
+                            className="flex-1 bg-cert-terra hover:bg-cert-terra/80 text-white"
                             text="Nouvelle oeuvre"
                             href="/dashboard/my-works/new"
                             icon={<Plus className="mr-2 h-4 w-4" />}
