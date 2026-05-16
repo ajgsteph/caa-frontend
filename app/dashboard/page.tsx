@@ -16,6 +16,7 @@ import {
 import Link from "next/link"
 import CustomButton from "@/components/custom-ui/custom-button"
 import { useSession } from "next-auth/react"
+import PageTitle from "@/components/shared/page-title"
 
 export default function Dashboard() {
     const { data: session } = useSession()
@@ -23,10 +24,10 @@ export default function Dashboard() {
         <div className="flex-1 space-y-4">
 
             {/* ─── HEADER GREETING ─── */}
-            <div>
-                <h1 className="text-3xl font-bold tracking-tight">Hello, {session?.user?.artistName}</h1>
-                <p className="text-muted-foreground">Bienvenue sur votre espace artiste Certifa</p>
-            </div>
+            <PageTitle 
+                title={`Hello, ${session?.user?.artistName}`} 
+                description="Bienvenue sur votre espace artiste Certifa" 
+            />
 
             {/* ─── VERIFICATION ALERT ─── */}
             <Alert className="bg-[#FFF9EB] border-[#FDE68A] flex items-center justify-between p-4 rounded-none">

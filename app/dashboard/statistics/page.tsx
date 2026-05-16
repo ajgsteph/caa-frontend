@@ -2,7 +2,8 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { QrCode, Eye, MapPin, MousePointerClick, TrendingUp } from "lucide-react"
+import { QrCode, Eye, MapPin, TrendingUp } from "lucide-react"
+import PageTitle from "@/components/shared/page-title"
 
 const fakeStats = [
   { id: 1, title: "Nature Morte #12", totalScans: 45, uniqueVisitors: 30, topLocation: "Paris, France", status: "Très actif" },
@@ -17,10 +18,7 @@ export default function StatisticsPage() {
     <div className="flex-1 space-y-8">
 
       {/* ─── HEADER ─── */}
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight">Statistiques</h1>
-        <p className="text-muted-foreground">Performances et consultations de vos œuvres certifiées.</p>
-      </div>
+      <PageTitle title="Statistiques" description="Performances et consultations de vos œuvres certifiées." />
 
       {/* ─── KPI GRID ─── */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">

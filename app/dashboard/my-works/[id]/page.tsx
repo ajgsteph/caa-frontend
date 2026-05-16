@@ -7,6 +7,7 @@ import Link from "next/link";
 import { use } from "react";
 import DecorativeCorners from "@/components/custom-ui/decorative-corners";
 import { CustomSpinner } from "@/components/custom-ui/custom-spinner";
+import PageTitle from "@/components/shared/page-title";
 
 interface EditArtworkPageProps {
     params: Promise<{ id: string }>;
@@ -43,14 +44,7 @@ export default function EditArtworkPage({ params }: EditArtworkPageProps) {
                 Mes œuvres
             </Link>
 
-            <div>
-                <h1 className="text-2xl font-semibold tracking-tight">
-                    Modifier « {artwork.title} »
-                </h1>
-                <p className="text-sm mt-1">
-                    Les modifications seront appliquées immédiatement.
-                </p>
-            </div>
+            <PageTitle title={`Modifier «${artwork.title}»`} description="Les modifications seront appliquées immédiatement." />
 
             <div className="relative rounded-none border bg-white p-6 md:p-8">
                 <DecorativeCorners />

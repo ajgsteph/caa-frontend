@@ -28,7 +28,7 @@ export default function CustomButton({
         hideTextBreakpoint === "lg" ? "hidden lg:inline" :
           hideTextBreakpoint === "xl" ? "hidden xl:inline" : "";
 
-  const baseClasses = "flex items-center justify-center gap-2 px-3 h-10 bg-transparent border border-cert-terra rounded-none text-gray-900 font-bold hover:bg-cert-terra hover:text-white shadow-none transition-colors";
+  const baseClasses = "flex items-center justify-center gap-2 px-4 h-12 bg-transparent border border-cert-terra rounded-none text-gray-900 font-bold hover:bg-cert-terra hover:text-white shadow-none transition-colors";
 
   const content = (
     <>

@@ -2,6 +2,7 @@ import { ArtworkList } from "@/components/artworks/artwork-list";
 import { PlusCircle } from "lucide-react";
 import type { Metadata } from "next";
 import CustomButton from "@/components/custom-ui/custom-button";
+import PageTitle from "@/components/shared/page-title";
 
 export const metadata: Metadata = { title: "Mes œuvres — Certifa" };
 
@@ -10,14 +11,7 @@ export default function MyWorksPage() {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-semibold tracking-tight">
-            Mes œuvres
-          </h1>
-          <p className="text-sm mt-1">
-            Gérez et certifiez vos créations artistiques.
-          </p>
-        </div>
+        <PageTitle title="Mes œuvres" description="Gérez et certifiez vos créations artistiques." />
         <CustomButton
           text="Nouvelle œuvre"
           icon={<PlusCircle className="h-4 w-4 mr-2" />}

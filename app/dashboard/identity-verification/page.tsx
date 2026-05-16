@@ -3,9 +3,9 @@
 import { useState, useRef } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import { Clock, Shield, Upload, Eye } from "lucide-react"
 import CustomButton from "@/components/custom-ui/custom-button"
+import PageTitle from "@/components/shared/page-title"
 
 export default function IdentityVerificationPage() {
   const [file, setFile] = useState<File | null>(null)
@@ -21,12 +21,7 @@ export default function IdentityVerificationPage() {
     <div className="flex-1 space-y-6 max-w-3xl">
 
       {/* ─── HEADER ─── */}
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight">Vérification d&apos;identité</h1>
-        <p className="text-muted-foreground mt-1">
-          Vérifiez votre identité pour créer des certificats d&apos;authenticité
-        </p>
-      </div>
+      <PageTitle title="Vérification d&apos;identité" description="Vérifiez votre identité pour créer des certificats d&apos;authenticité" />
 
       {/* ─── STATUT EN ATTENTE ─── */}
       <Card className="bg-[#FFF9EB] border-[#FDE68A] shadow-none rounded-none">

@@ -110,7 +110,7 @@ export function ArtworkCard({ artwork }: ArtworkCardProps) {
                     />
 
                     <AlertDialog>
-                        <AlertDialogTrigger className="flex-1 flex items-center justify-center gap-1.5 h-10 px-2 border border-red-600 text-cert-terra hover:bg-cert-terra hover:text-white transition-colors min-w-0 outline-none">
+                        <AlertDialogTrigger className="flex-1 flex items-center justify-center gap-1.5 h-12 px-2 border border-red-600 text-cert-terra hover:bg-cert-terra hover:text-white transition-colors min-w-0 outline-none">
                             <Trash2 className="h-4 w-4 shrink-0" />
                             <span className="truncate font-bold text-sm">Supprimer</span>
                         </AlertDialogTrigger>

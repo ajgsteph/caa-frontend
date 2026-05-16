@@ -11,6 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import PageTitle from "@/components/shared/page-title"
 
 const transactions = [
   {
@@ -44,10 +45,7 @@ export default function PaymentsPage() {
     <div className="flex-1 space-y-8">
 
       {/* ─── HEADER ─── */}
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight">Paiements</h1>
-        <p className="text-muted-foreground">Historique de vos paiements de certificats</p>
-      </div>
+      <PageTitle title="Paiements" description="Historique de vos paiements de certificats" />
 
       {/* ─── KPI GRID ─── */}
       <div className="grid gap-4 md:grid-cols-2">
