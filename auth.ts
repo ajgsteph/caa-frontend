@@ -14,14 +14,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
 
       async authorize(credentials) {
-        // 1. Validation des credentials
         const parsed = loginSchema.safeParse({
           email: credentials?.email,
           password: credentials?.password,
         });
         if (!parsed.success) return null;
 
-        // 2. Login → récupération du token Sanctum
         let token: string;
         try {
           const loginResponse = await authApi.login(parsed.data);
@@ -37,15 +35,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           throw new Error(message);
         }
 
-        // 3. Appel profil avec le token fraîchement obtenu
-        //    → on dispose de TOUTES les infos artiste dès la session initiale
         let profile: Awaited<ReturnType<typeof authApi.getProfile>>["data"];
         try {
           const profileResponse = await authApi.getProfile(token);
           profile = profileResponse.data;
         } catch (error) {
           console.error("[Certifa][authorize] getProfile failed:", error);
-          // Si le profil échoue, on continue avec les données minimales
           profile = {
             id: 0,
             last_name: "",
@@ -59,7 +54,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           };
         }
 
-        // 4. Construire l'objet session complet
         const user: SessionUser = {
           id: profile.id,
           email: profile.email,
@@ -67,7 +61,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           lastName: profile.last_name,
           artistName: profile.artist_name,
           roles: profile.roles,
-          sanctumToken: token, // stocké en JWT chiffré, jamais exposé au client
+          sanctumToken: token,
         };
 
         return user as unknown as Parameters<typeof Credentials>[0] extends {
@@ -98,9 +92,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async session({ session, token }) {
       return {
         ...session,
-        // sanctumToken au niveau racine de la session — accessible via auth()
-        // côté serveur uniquement. Absent de session.user → jamais sérialisé
-        // vers le client par useSession() ou les Server Components publics.
         sanctumToken: token.sanctumToken as string,
         user: {
           id: token.id as number,

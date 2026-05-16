@@ -112,7 +112,7 @@ export function ArtworkForm({ artwork, onSuccess }: ArtworkFormProps) {
                             </button>
                         </>
                     ) : (
-                        <div className="flex flex-col items-center justify-center h-48 gap-2" style={{ color: "var(--muted)" }}>
+                        <div className="flex flex-col items-center justify-center h-48 gap-2">
                             <ImagePlus className="h-8 w-8 opacity-40" />
                             <span className="text-sm">Cliquer pour ajouter une image</span>
                         </div>

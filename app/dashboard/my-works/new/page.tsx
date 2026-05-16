@@ -4,9 +4,10 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import DecorativeCorners from "@/components/custom-ui/decorative-corners";
 
+
 export const metadata: Metadata = { title: "Nouvelle œuvre — CAA" };
 
-export default function NewArtworkPage() {
+export default async function NewArtworkPage() {
     return (
         <div className="max-w-3xl space-y-6">
             <div className="flex items-center gap-3">
