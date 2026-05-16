@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import DecorativeCorners from "@/components/custom-ui/decorative-corners";
 
 
-export const metadata: Metadata = { title: "Nouvelle œuvre — CAA" };
+export const metadata: Metadata = { title: "Nouvelle œuvre — Certifia" };
 
 export default async function NewArtworkPage() {
     return (

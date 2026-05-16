@@ -7,7 +7,6 @@ import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import {
     Select,
@@ -139,15 +138,19 @@ export function ArtworkForm({ artwork, onSuccess }: ArtworkFormProps) {
                         Type <span className="text-red-600 text-xl">*</span>
                     </Label>
                     <Select
-                        defaultValue={form.getValues("type")}
+                        value={form.watch("type") || ""}
                         onValueChange={(v) => form.setValue("type", v as ArtworkFormValues["type"])}
                     >
                         <SelectTrigger className="rounded-none h-12! w-full">
-                            <SelectValue placeholder="Choisir un type" />
+                            <SelectValue placeholder="Choisir un type">
+                                {form.watch("type") ? ARTWORK_TYPE_LABELS[form.watch("type") as keyof typeof ARTWORK_TYPE_LABELS] : "Choisir un type"}
+                            </SelectValue>
                         </SelectTrigger>
                         <SelectContent className="rounded-none">
                             {Object.entries(ARTWORK_TYPE_LABELS).map(([value, label]) => (
-                                <SelectItem className="rounded-none" key={value} value={value}>{label}</SelectItem>
+                                <SelectItem className="rounded-none" key={value} value={value}>
+                                    {label}
+                                </SelectItem>
                             ))}
                         </SelectContent>
                     </Select>

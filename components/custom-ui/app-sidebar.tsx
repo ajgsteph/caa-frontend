@@ -114,13 +114,15 @@ export function AppSidebar() {
                 <SidebarGroup>
                     <SidebarMenu>
                         {data.navMain.map((item) => {
-                            const isGroupActive = pathname === item.url || pathname.startsWith(`${item.url}/`)
+                            const isActive =
+                                pathname === item.url ||
+                                (item.url !== "/dashboard" && pathname.startsWith(`${item.url}/`));
 
                             return item.items && item.items.length > 0 ? (
-                                <Collapsible key={item.title} defaultOpen={isGroupActive} className="group/collapsible">
+                                <Collapsible key={item.title} defaultOpen={isActive} className="group/collapsible">
                                     <SidebarMenuItem>
                                         <CollapsibleTrigger className="w-full outline-none">
-                                            <div className={`flex w-full items-center gap-2 rounded-md p-2 text-sm font-medium transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground ${isGroupActive
+                                            <div className={`flex w-full items-center gap-2 rounded-md p-2 text-sm font-medium transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground ${isActive
                                                 ? "bg-sidebar-accent text-sidebar-accent-foreground"
                                                 : "text-sidebar-foreground"
                                                 }`}>
@@ -151,7 +153,11 @@ export function AppSidebar() {
                                 </Collapsible>
                             ) : (
                                 <SidebarMenuItem key={item.title}>
-                                    <SidebarMenuButton tooltip={item.title} isActive={pathname === item.url} className={"rounded-none " + (pathname === item.url ? "bg-cert-terra/90! text-white!" : "")}>
+                                    <SidebarMenuButton
+                                        tooltip={item.title}
+                                        isActive={isActive}
+                                        className={"rounded-none " + (isActive ? "bg-cert-terra/90! text-white!" : "")}
+                                    >
                                         <Link href={item.url} className="flex items-center gap-2 w-full h-full">
                                             {item.icon && <item.icon className="size-4" />}
                                             <span>{item.title}</span>

@@ -2,7 +2,6 @@ import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import { getServerProfile } from "@/actions/profile.actions";
 import { ProfileHeader } from "@/components/profile/profile-header";
-import { ProfileInfoCard } from "@/components/profile/profile-info-card";
 import { UpdateEmailForm } from "@/components/profile/update-email-form";
 import { UpdatePasswordForm } from "@/components/profile/update-password-form";
 import { UpdatePhoneForm } from "@/components/profile/update-phone-form";
