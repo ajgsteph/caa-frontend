@@ -33,7 +33,7 @@ async function backendFetch<T>(
     ...fetchOptions.headers,
   };
 
-  const res = await fetch(`${env.BACKEND_URL}${path}`, {
+  const res = await fetch(`${env.NEXT_PUBLIC_BACKEND_URL}${path}`, {
     ...fetchOptions,
     headers,
     cache: "no-store",

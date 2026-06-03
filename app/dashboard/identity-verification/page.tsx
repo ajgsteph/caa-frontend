@@ -29,7 +29,7 @@ export default function IdentityVerificationPage() {
           <Clock className="h-6 w-6 text-[#D97706] mt-0.5" />
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <h3 className="font-semibold text-[#D97706]">Statut : En attente</h3>
+              <h3 className="font-semibold text-[#D97706]">Statut :</h3>
               <Badge variant="secondary" className="bg-[#FDE68A]/50 text-[#D97706] hover:bg-[#FDE68A]/50 font-normal">
                 En attente
               </Badge>

@@ -2,10 +2,9 @@ import { z } from "zod";
 
 const envSchema = z.object({
 
-  BACKEND_URL: z
+  NEXT_PUBLIC_BACKEND_URL: z
     .string()
-    .url("BACKEND_URL doit être une URL valide")
-    .default("https://caa-backend-603u.onrender.com"),
+    .url("NEXT_PUBLIC_BACKEND_URL doit être une URL valide"),
 
   AUTH_SECRET: z
     .string()

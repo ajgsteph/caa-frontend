@@ -10,7 +10,6 @@ import {
     CreditCard,
     BarChart3,
     ChevronRight,
-    ChevronsUpDown,
     GalleryVerticalEnd,
     type LucideIcon,
 } from "lucide-react"
