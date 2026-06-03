@@ -5,7 +5,7 @@ import type {
 } from "@/types/certificates";
 import type { CreateCertificateValues } from "@/lib/validations/certificate.schema";
 
-const BASE = process.env.NEXT_PUBLIC_BACKEND_URL ?? "https://caa-backend-603u.onrender.com";
+const BASE = process.env.NEXT_PUBLIC_BACKEND_URL ?? "https://api.certifa.art";
 
 async function apiFetch<T>(
     path: string,

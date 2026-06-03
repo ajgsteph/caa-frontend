@@ -24,9 +24,9 @@ export default function Dashboard() {
         <div className="flex-1 space-y-4">
 
             {/* ─── HEADER GREETING ─── */}
-            <PageTitle 
-                title={`Hello, ${session?.user?.artistName}`} 
-                description="Bienvenue sur votre espace artiste Certifa" 
+            <PageTitle
+                title={`Hello, ${session?.user?.artistName}`}
+                description="Bienvenue sur votre espace artiste Certifa"
             />
 
             {/* ─── VERIFICATION ALERT ─── */}
@@ -44,9 +44,11 @@ export default function Dashboard() {
                         </AlertDescription>
                     </div>
                 </div>
-                <Button variant="outline" className="border-[#FDE68A] hover:bg-[#FEF3C7] text-[#92400E] rounded-none">
-                    Vérifier
-                </Button>
+                <CustomButton
+                    text="Vérifier"
+                    href="/dashboard/identity-verification"
+                    className="border-[#FDE68A] hover:bg-[#FEF3C7] text-[#92400E] rounded-none h-10 bg-white hover:bg-[#FEF3C7] hover:text-[#92400E]"
+                />
             </Alert>
 
             {/* ─── STATISTICS GRID ─── */}

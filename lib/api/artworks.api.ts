@@ -3,7 +3,7 @@ import type {
     ArtworkResponse,
 } from "@/types/artworks";
 
-const BASE = process.env.NEXT_PUBLIC_BACKEND_URL ?? "https://caa-backend-603u.onrender.com";
+const BASE = process.env.NEXT_PUBLIC_BACKEND_URL ?? "https://api.certifa.art";
 
 async function apiFetch<T>(
     path: string,

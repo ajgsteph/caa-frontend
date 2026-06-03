@@ -8,7 +8,7 @@ async function profileFetch<T>(
     options: RequestInit = {}
 ): Promise<T> {
     const backendUrl =
-        process.env.BACKEND_URL ?? "https://caa-backend-603u.onrender.com";
+        process.env.NEXT_PUBLIC_BACKEND_URL ?? "https://api.certifa.art";
 
     const res = await fetch(`${backendUrl}${path}`, {
         ...options,
