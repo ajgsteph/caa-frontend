@@ -1,50 +1,24 @@
 "use client";
 
+import { useState } from "react";
 import { useCertificates } from "@/lib/query/certificates.queries";
 import { CertificateCard } from "./certificate-card";
-import { Skeleton } from "@/components/ui/skeleton";
+import { CertificateTable } from "./certificate-table";
 import { Button } from "@/components/ui/button";
-import { Award } from "lucide-react";
+import { Award, LayoutGrid, List } from "lucide-react";
 import { CustomSpinner } from "@/components/custom-ui/custom-spinner";
-
-function CertSkeleton() {
-    return (
-        <div className="rounded-xl border p-5 space-y-4" style={{ borderColor: "rgba(28,20,16,0.1)" }}>
-            <div className="flex items-center gap-3">
-                <Skeleton className="h-12 w-12 rounded-lg" />
-                <div className="flex-1 space-y-2">
-                    <Skeleton className="h-4 w-3/4" />
-                    <Skeleton className="h-3 w-1/2" />
-                </div>
-                <Skeleton className="h-5 w-20 rounded-full" />
-            </div>
-            <Skeleton className="h-px w-full" />
-            <div className="grid grid-cols-2 gap-3">
-                <Skeleton className="h-10" />
-                <Skeleton className="h-10" />
-            </div>
-            <Skeleton className="h-8 w-full" />
-        </div>
-    );
-}
 
 export function CertificateList() {
     const { data: certificates, isLoading, isError, refetch } = useCertificates();
+    const [view, setView] = useState<"grid" | "table">("table");
 
-    if (isLoading) {
-        return (
-            // <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            //     {Array.from({ length: 4 }).map((_, i) => <CertSkeleton key={i} />)}
-            // </div>
-            <CustomSpinner />
-        );
-    }
+    if (isLoading) return <CustomSpinner />;
 
     if (isError) {
         return (
             <div className="flex flex-col items-center justify-center py-20 gap-4">
                 <p className="text-sm">Impossible de charger vos certificats.</p>
-                <Button variant="outline" onClick={() => refetch()}>Réessayer</Button>
+                <Button variant="outline" onClick={() => refetch()} className="rounded-none">Réessayer</Button>
             </div>
         );
     }
@@ -56,22 +30,47 @@ export function CertificateList() {
                     <Award className="h-8 w-8" />
                 </div>
                 <div className="text-center">
-                    <h3 className="font-semibold mb-1">
-                        Aucun certificat émis
-                    </h3>
-                    <p className="text-sm">
-                        Les certificats apparaîtront ici après leur création depuis une œuvre.
-                    </p>
+                    <h3 className="font-semibold mb-1">Aucun certificat émis</h3>
+                    <p className="text-sm">Les certificats apparaîtront ici après leur création depuis une œuvre.</p>
                 </div>
             </div>
         );
     }
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {certificates.map((cert) => (
-                <CertificateCard key={cert.id} certificate={cert} />
-            ))}
+        <div className="space-y-4">
+            <div className="flex justify-end">
+                <div className="flex items-center border rounded-none p-1 bg-white shadow-sm">
+                    <Button
+                        variant={view === "grid" ? "secondary" : "ghost"}
+                        size="sm"
+                        className="h-8 px-3 rounded-none"
+                        onClick={() => setView("grid")}
+                    >
+                        <LayoutGrid className="h-4 w-4 mr-2" />
+                        Grille
+                    </Button>
+                    <Button
+                        variant={view === "table" ? "secondary" : "ghost"}
+                        size="sm"
+                        className="h-8 px-3 rounded-none"
+                        onClick={() => setView("table")}
+                    >
+                        <List className="h-4 w-4 mr-2" />
+                        Liste
+                    </Button>
+                </div>
+            </div>
+
+            {view === "grid" ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {certificates.map((cert) => (
+                        <CertificateCard key={cert.id} certificate={cert} />
+                    ))}
+                </div>
+            ) : (
+                <CertificateTable certificates={certificates} />
+            )}
         </div>
     );
 }
