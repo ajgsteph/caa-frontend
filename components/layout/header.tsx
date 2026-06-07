@@ -92,8 +92,7 @@ export function Header() {
                 <div className="container h-20 flex items-center justify-between">
 
                     <Link href="/" className="flex items-center gap-3 relative z-50">
-                        <Logo className="w-10 h-10 text-foreground" />
-                        <span className="font-serif font-semibold text-xl tracking-tight">Certifa</span>
+                        <Logo />
                     </Link>
 
                     <nav className="hidden lg:flex items-center gap-8 text-md font-medium text-cert-muted">
@@ -120,8 +119,7 @@ export function Header() {
                 <div className="fixed inset-0 z-50 bg-background flex flex-col lg:hidden animate-in slide-in-from-top-2 fade-in duration-200">
                     <div className="container mx-auto px-6 h-20 flex items-center justify-between border-b border-border/10">
                         <Link href="/" className="flex items-center gap-3" onClick={() => setIsMobileMenuOpen(false)}>
-                            <Logo className="w-10 h-10 text-foreground" />
-                            <span className="font-semibold text-xl tracking-tight">Certifa</span>
+                            <Logo />
                         </Link>
                         <button className="p-2 -mr-2 text-foreground" onClick={() => setIsMobileMenuOpen(false)} aria-label="Fermer le menu">
                             <X size={24} />

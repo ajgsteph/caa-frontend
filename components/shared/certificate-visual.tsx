@@ -1,4 +1,4 @@
-import { Logo } from "./logo";
+import Image from "next/image";
 
 export function CertificateVisual() {
     return (
@@ -42,8 +42,8 @@ export function CertificateVisual() {
             </div>
 
             {/* Tampon flottant */}
-            <div className="absolute -top-4 -right-4 text-foreground rotate-12 z-10 bg-background rounded-full">
-                <Logo className="w-24 h-24" />
+            <div className="absolute -top-2 -right-2 text-foreground rotate-12 z-10 bg-background rounded-full">
+                <Image src="/icons/favicon-certifa.png" alt="Logo" className="w-16 h-16" width={64} height={64} />
             </div>
         </div>
     );

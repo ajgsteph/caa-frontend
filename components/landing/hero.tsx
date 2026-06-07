@@ -7,9 +7,9 @@ export function Hero() {
     <section className="py-20">
       <div className="container grid md:grid-cols-[1.1fr_0.9fr] gap-16 items-center">
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <Badge variant="secondary" className="mb-8 px-1 sm:px-4 py-3 text-[9px] sm:text-xs tracking-wider uppercase rounded-none bg-cert-secondary border border-cert-terra">
+          <Badge variant="secondary" className="mb-8 px-1 sm:px-4 py-3 text-[10px] sm:text-xs tracking-wider uppercase rounded-none bg-cert-secondary border border-cert-terra">
             <span className="w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full bg-foreground mr-1 md:mr-2" />
-            Certifications pour artistes
+            Certificats d'authenticité pour artistes
           </Badge>
 
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">

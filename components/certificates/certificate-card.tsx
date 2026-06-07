@@ -28,7 +28,7 @@ export function CertificateCard({ certificate: cert }: CertificateCardProps) {
     });
 
     return (
-        <Card className="overflow-hidden border shadow-none transition-all duration-200 hover:-translate-y-1 group rounded-none bg-white">
+        <Card className="overflow-hidden border shadow-none transition-all duration-200 hover:-translate-y-1 group rounded-none bg-white p-0">
 
             {/* ─── IMAGE HEADER & BADGES ─── */}
             <div className="relative h-48 overflow-hidden bg-gray-50 border-b">
