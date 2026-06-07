@@ -30,6 +30,7 @@ import {
     CollapsibleContent,
     CollapsibleTrigger,
 } from "@/components/ui/collapsible"
+import { Logo } from "../shared/logo"
 
 interface NavSubItem {
     title: string;
@@ -93,16 +94,9 @@ export function AppSidebar() {
             <SidebarHeader>
                 <SidebarMenu>
                     <SidebarMenuItem>
-                        <SidebarMenuButton size="lg">
-                            <Link href="/dashboard" className="flex items-center gap-3 w-full h-full">
-                                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-cert-terra text-white">
-                                    <GalleryVerticalEnd className="size-4" />
-                                </div>
-                                <div className="flex flex-col gap-0.5 leading-none">
-                                    <span className="font-semibold text-sm">Certifa</span>
-                                    <span className="text-xs text-muted-foreground">Artist Hub</span>
-                                </div>
-                                {/* <ChevronsUpDown className="ml-auto size-4" /> */}
+                        <SidebarMenuButton size="lg" className="rounded-none">
+                            <Link href="/" className="flex items-center gap-3 w-full h-full">
+                                <Logo />
                             </Link>
                         </SidebarMenuButton>
                     </SidebarMenuItem>

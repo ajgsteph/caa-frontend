@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Certifa",
-  description: "Certification d'authenticité d'oeuvres d'art",
+  description: "Certificats d'authenticité d'oeuvres d'art"
 };
 
 export default async function RootLayout({

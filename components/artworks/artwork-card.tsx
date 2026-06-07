@@ -44,7 +44,7 @@ export function ArtworkCard({ artwork }: ArtworkCardProps) {
     };
 
     return (
-        <Card className="overflow-hidden border shadow-none transition-all duration-200 hover:-translate-y-1 group rounded-none">
+        <Card className="overflow-hidden border shadow-none transition-all duration-200 hover:-translate-y-1 group p-0 rounded-none">
             {/* Image */}
             <div className="relative h-48 overflow-hidden">
                 {artwork.image_url ? (
