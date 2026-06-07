@@ -30,7 +30,7 @@ export interface CertificateClient {
 
 export interface Certificate {
     id: number;
-    number: string;
+    unique_number: string;
     status: CertificateStatus;
     artwork: Pick<Artwork, "id" | "title" | "type" | "image_url">;
     client: CertificateClient;

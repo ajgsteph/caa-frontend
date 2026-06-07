@@ -47,14 +47,7 @@ export const certificatesApi = {
         apiFetch("/api/v1/certificates", token, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                artwork_id: data.artwork_id,
-                "client[last_name]": data.client.last_name,
-                "client[first_name]": data.client.first_name,
-                "client[email]": data.client.email,
-                "client[phone]": data.client.phone ?? "",
-                "payment[method]": data.payment.method,
-            }),
+            body: JSON.stringify(data),
         }),
 
     revoke: (token: string, id: number, reason: string): Promise<void> =>
