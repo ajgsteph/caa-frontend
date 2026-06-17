@@ -1,55 +1,13 @@
-import { env } from "@/lib/env";
+import { backendFetch, ApiError } from "@/lib/api/client";
 import type {
   LoginApiResponse,
   RegisterApiResponse,
   ApiUser,
 } from "@/types/auth";
 
-// ─── Erreur typée retournée par Laravel ──────────────────────────────────────
-
-export class ApiError extends Error {
-  constructor(
-    public readonly status: number,
-    message: string,
-    public readonly errors?: Record<string, string[]>
-  ) {
-    super(message);
-    this.name = "ApiError";
-  }
-}
-
-// ─── Helper fetch vers le backend ────────────────────────────────────────────
-
-async function backendFetch<T>(
-  path: string,
-  options: RequestInit & { token?: string } = {}
-): Promise<T> {
-  const { token, ...fetchOptions } = options;
-
-  const headers: HeadersInit = {
-    "Content-Type": "application/json",
-    Accept: "application/json",
-    ...(token ? { Authorization: `Bearer ${token}` } : {}),
-    ...fetchOptions.headers,
-  };
-
-  const res = await fetch(`${env.NEXT_PUBLIC_BACKEND_URL}${path}`, {
-    ...fetchOptions,
-    headers,
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    const body = await res.json().catch(() => ({}));
-    throw new ApiError(
-      res.status,
-      body.message ?? "Une erreur est survenue",
-      body.errors
-    );
-  }
-
-  return res.json() as Promise<T>;
-}
+// Ré-exporté pour compatibilité : `auth.ts` et `auth.actions.ts` importent
+// `ApiError` depuis ce module.
+export { ApiError };
 
 // ─── Endpoints ────────────────────────────────────────────────────────────────
 

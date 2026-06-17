@@ -1,3 +1,5 @@
+// fallow-ignore-file unused-file
+// Composant réservé : select personnalisé, prévu pour une future intégration.
 import React from "react";
 import {
     Select,

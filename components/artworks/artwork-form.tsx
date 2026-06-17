@@ -1,6 +1,6 @@
 "use client";
 
-import { useForm } from "react-hook-form";
+import { useForm, type UseFormReturn } from "react-hook-form";
 import { standardSchemaResolver } from "@hookform/resolvers/standard-schema";
 import { artworkSchema, type ArtworkFormValues } from "@/lib/validations/artwork.schema";
 import { useRef, useState } from "react";
@@ -19,10 +19,58 @@ import { AlertCircle, ImagePlus, X } from "lucide-react";
 import { ARTWORK_TYPE_LABELS, type Artwork } from "@/types/artworks";
 import { useCreateArtwork, useUpdateArtwork } from "@/lib/query/artworks.mutations";
 import CustomButton from "../custom-ui/custom-button";
+import { FieldError } from "../custom-ui/field-error";
 
 interface ArtworkFormProps {
     artwork?: Artwork;
     onSuccess?: () => void;
+}
+
+function buildDefaults(artwork?: Artwork): ArtworkFormValues {
+    return {
+        title: artwork?.title ?? "",
+        type: artwork?.type ?? "PAINTING",
+        technique: artwork?.technique ?? "",
+        dimensions: artwork?.dimensions ?? "",
+        year: artwork?.year ?? new Date().getFullYear(),
+        description: artwork?.description ?? "",
+        signature: artwork?.signature ?? "",
+    };
+}
+
+function submitLabel(isPending: boolean, isEditing: boolean): string {
+    if (isPending) return isEditing ? "Enregistrement…" : "Création…";
+    return isEditing ? "Enregistrer les modifications" : "Créer l'œuvre";
+}
+
+// Champ "Type" isolé : confine les `form.watch(...)` et la liste d'options.
+function ArtworkTypeField({ form }: { form: UseFormReturn<ArtworkFormValues> }) {
+    const current = form.watch("type");
+    return (
+        <div className="space-y-0">
+            <Label className="text-sm font-medium">
+                Type <span className="text-red-600 text-xl">*</span>
+            </Label>
+            <Select
+                value={current || ""}
+                onValueChange={(v) => form.setValue("type", v as ArtworkFormValues["type"])}
+            >
+                <SelectTrigger className="rounded-none h-12! w-full">
+                    <SelectValue placeholder="Choisir un type">
+                        {current ? ARTWORK_TYPE_LABELS[current as keyof typeof ARTWORK_TYPE_LABELS] : "Choisir un type"}
+                    </SelectValue>
+                </SelectTrigger>
+                <SelectContent className="rounded-none">
+                    {Object.entries(ARTWORK_TYPE_LABELS).map(([value, label]) => (
+                        <SelectItem className="rounded-none" key={value} value={value}>
+                            {label}
+                        </SelectItem>
+                    ))}
+                </SelectContent>
+            </Select>
+            <FieldError message={form.formState.errors.type?.message} />
+        </div>
+    );
 }
 
 export function ArtworkForm({ artwork, onSuccess }: ArtworkFormProps) {
@@ -39,15 +87,7 @@ export function ArtworkForm({ artwork, onSuccess }: ArtworkFormProps) {
 
     const form = useForm<ArtworkFormValues>({
         resolver: standardSchemaResolver(artworkSchema),
-        defaultValues: {
-            title: artwork?.title ?? "",
-            type: artwork?.type ?? "PAINTING",
-            technique: artwork?.technique ?? "",
-            dimensions: artwork?.dimensions ?? "",
-            year: artwork?.year ?? new Date().getFullYear(),
-            description: artwork?.description ?? "",
-            signature: artwork?.signature ?? "",
-        },
+        defaultValues: buildDefaults(artwork),
     });
 
     const handleImage = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -129,33 +169,11 @@ export function ArtworkForm({ artwork, onSuccess }: ArtworkFormProps) {
                         Titre <span className="text-red-600 text-xl">*</span>
                     </Label>
                     <Input id="title" {...form.register("title")} placeholder="Les Tisserandes" className="h-12 rounded-none" />
-                    {form.formState.errors.title && <p className="text-xs text-red-600">{form.formState.errors.title.message}</p>}
+                    <FieldError message={form.formState.errors.title?.message} />
                 </div>
 
                 {/* Type */}
-                <div className="space-y-0">
-                    <Label className="text-sm font-medium">
-                        Type <span className="text-red-600 text-xl">*</span>
-                    </Label>
-                    <Select
-                        value={form.watch("type") || ""}
-                        onValueChange={(v) => form.setValue("type", v as ArtworkFormValues["type"])}
-                    >
-                        <SelectTrigger className="rounded-none h-12! w-full">
-                            <SelectValue placeholder="Choisir un type">
-                                {form.watch("type") ? ARTWORK_TYPE_LABELS[form.watch("type") as keyof typeof ARTWORK_TYPE_LABELS] : "Choisir un type"}
-                            </SelectValue>
-                        </SelectTrigger>
-                        <SelectContent className="rounded-none">
-                            {Object.entries(ARTWORK_TYPE_LABELS).map(([value, label]) => (
-                                <SelectItem className="rounded-none" key={value} value={value}>
-                                    {label}
-                                </SelectItem>
-                            ))}
-                        </SelectContent>
-                    </Select>
-                    {form.formState.errors.type && <p className="text-xs text-red-600">{form.formState.errors.type.message}</p>}
-                </div>
+                <ArtworkTypeField form={form} />
 
                 {/* Année */}
                 <div className="space-y-1.5">
@@ -168,7 +186,7 @@ export function ArtworkForm({ artwork, onSuccess }: ArtworkFormProps) {
                         {...form.register("year", { valueAsNumber: true })}
                         className="rounded-none h-12"
                     />
-                    {form.formState.errors.year && <p className="text-xs text-red-600">{form.formState.errors.year.message}</p>}
+                    <FieldError message={form.formState.errors.year?.message} />
                 </div>
 
                 {/* Technique */}
@@ -212,9 +230,7 @@ export function ArtworkForm({ artwork, onSuccess }: ArtworkFormProps) {
                 />
 
                 <CustomButton
-                    text={mutation.isPending
-                        ? isEditing ? "Enregistrement…" : "Création…"
-                        : isEditing ? "Enregistrer les modifications" : "Créer l'œuvre"}
+                    text={submitLabel(mutation.isPending, isEditing)}
                     type="submit"
                     disabled={mutation.isPending}
                     className="flex-1 bg-cert-terra text-white"

@@ -28,6 +28,18 @@ export interface CertificateClient {
     phone?: string | null;
 }
 
+export type PaymentStatus = "PENDING" | "SUCCESSFUL" | "FAILED" | "REFUNDED";
+
+export interface CertificatePayment {
+    id: number;
+    amount: number;
+    method: PaymentMethod;
+    method_label: string;
+    status: PaymentStatus;
+    paid_at: string | null;
+    transaction_reference: string | null;
+}
+
 export interface Certificate {
     id: number;
     unique_number: string;
@@ -35,9 +47,14 @@ export interface Certificate {
     artwork: Pick<Artwork, "id" | "title" | "type" | "image_url">;
     client: CertificateClient;
     payment_method: PaymentMethod;
+    payment?: CertificatePayment;
     created_at: string;
     revoked_at: string | null;
     revocation_reason: string | null;
+}
+
+export interface PaymentResponse {
+    data: CertificatePayment;
 }
 
 export interface CertificateListResponse {

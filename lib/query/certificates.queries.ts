@@ -13,13 +13,22 @@ export function useCertificates() {
     });
 }
 
-export function useCertificate(id: number) {
+/**
+ * Détail d'un certificat. Pendant l'attente de paiement (`PENDING`), on
+ * rafraîchit toutes les 3 s pour détecter le passage à `ACTIVE` déclenché par
+ * le webhook KKiaPay.
+ */
+export function useCertificate(id: number, options?: { pollWhilePending?: boolean }) {
     const token = useToken();
     return useQuery({
         queryKey: certificateKeys.detail(id),
         queryFn: () => certificatesApi.get(token!, id),
         enabled: !!token && !!id,
         select: (data) => data.data,
+        refetchInterval: (query) =>
+            options?.pollWhilePending && query.state.data?.data.status === "PENDING"
+                ? 3000
+                : false,
     });
 }
 
