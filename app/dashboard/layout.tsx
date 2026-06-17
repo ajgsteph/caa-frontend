@@ -11,6 +11,7 @@ import Link from "next/link";
 import { QueryProvider } from "@/providers/query-provider";
 import { TokenProvider } from "@/lib/helpers/use-token";
 import { SessionProvider } from "next-auth/react";
+import Script from "next/script";
 
 export default async function DashboardLayout({
   children,
@@ -28,6 +29,7 @@ export default async function DashboardLayout({
 
   return (
     <SessionProvider session={session}>
+      <Script src="https://cdn.kkiapay.me/k.js" strategy="afterInteractive" />
       <QueryProvider>
         <TokenProvider token={token}>
           <div className="min-h-screen bg-gray-50">

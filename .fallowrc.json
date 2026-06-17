@@ -1,0 +1,58 @@
+{
+  "$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/schema.json",
+
+  // Pas d'`entry` explicite : le plugin Next.js détecte automatiquement les
+  // points d'entrée (pages/layouts/route handlers de `app/`, proxy.ts, etc.).
+
+  "duplicates": {
+    // On masque les clones n'apparaissant que dans 2 fichiers pour se concentrer
+    // sur le copier-coller réellement répandu.
+    "minOccurrences": 3
+  },
+
+  // Dépendance conservée volontairement : @tanstack/react-table est installé
+  // pour un futur tableau de données (aucun import pour l'instant).
+  "ignoreDependencies": ["@tanstack/react-table"],
+
+  "rules": {
+    "unused-files": "error",
+    "unused-exports": "error",
+    "unused-types": "error",
+    "unused-dependencies": "error",
+    "unresolved-imports": "error",
+    "unlisted-dependencies": "error",
+    "circular-dependencies": "error",
+    "stale-suppressions": "warn"
+  },
+
+  "overrides": [
+    {
+      // `components/ui/**` est la bibliothèque de primitives shadcn/ui (code
+      // vendoré) : on conserve volontairement toute sa surface d'API et ses
+      // fichiers pour une utilisation incrémentale, sans les signaler comme morts.
+      "files": ["components/ui/**"],
+      "rules": {
+        "unused-exports": "off",
+        "unused-files": "off"
+      }
+    }
+  ],
+
+  "health": {
+    "maxCyclomatic": 20,
+    "maxCognitive": 15,
+
+    // Cohérent avec l'override ci-dessus : le kit shadcn/ui vendoré est exclu de
+    // l'analyse de santé (sinon ses exports volontairement conservés génèrent des
+    // « refactoring targets » de code mort). Ses fonctions sont déjà sous le seuil.
+    "ignore": ["components/ui/**"],
+
+    // CRAP volontairement élargi (défaut : 30), avec justification :
+    // aucune donnée de couverture (tests/runtime) n'est branchée, donc CRAP
+    // dégénère en ~cyclomatique² + cyclomatique et fait double emploi avec la
+    // complexité cyclomatique. 420 = plafond CRAP impliqué par notre limite
+    // cyclomatique (20² + 20). On contrôle donc directement sur cyclomatique /
+    // cognitive ; CRAP ne se déclenche que sur des cas pathologiques.
+    "maxCrap": 420
+  }
+}

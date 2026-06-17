@@ -18,9 +18,14 @@ export const createCertificateSchema = z.object({
     }),
 });
 
+/**
+ * @expected-unused — le bouton de révocation valide pour l'instant en ligne ;
+ * ce schéma est conservé pour brancher la validation du motif côté formulaire.
+ */
 export const revokeCertificateSchema = z.object({
     reason: z.string().min(10, "Le motif doit faire au moins 10 caractères").max(1000),
 });
 
 export type CreateCertificateValues = z.infer<typeof createCertificateSchema>;
+/** @expected-unused — type dérivé de [[revokeCertificateSchema]], réservé pour la future validation. */
 export type RevokeCertificateValues = z.infer<typeof revokeCertificateSchema>;

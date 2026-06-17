@@ -45,3 +45,12 @@ export function useDownloadLink() {
         },
     });
 }
+
+export function useRetryPayment() {
+    const token = useToken();
+
+    return useMutation({
+        mutationFn: (certificateId: number) =>
+            certificatesApi.retryPayment(token!, certificateId),
+    });
+}

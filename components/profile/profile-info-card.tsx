@@ -1,3 +1,5 @@
+// fallow-ignore-file unused-file
+// Composant réservé : carte d'informations de profil, prévue pour une future page profil.
 import type { ApiUser } from "@/types/auth";
 import {
     Card,

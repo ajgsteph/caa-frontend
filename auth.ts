@@ -2,6 +2,7 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { authApi, ApiError } from "@/lib/api/auth.api";
 import { loginSchema } from "@/lib/validations/auth.schema";
+import { env } from "@/lib/env";
 import type { SessionUser } from "@/types/auth";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
@@ -110,6 +111,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     signIn: "/auth/login",
     error: "/auth/login",
   },
+
+  // ─── Secret validé (lib/env vérifie AUTH_SECRET ≥ 32 caractères) ────────────
+  secret: env.AUTH_SECRET,
 
   // ─── Session ────────────────────────────────────────────────────────────────
   session: {

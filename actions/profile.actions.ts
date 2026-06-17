@@ -21,7 +21,7 @@ export type ProfileActionResult =
 // auth() côté serveur retourne le token JWT complet, pas juste session.user.
 // On caste en unknown pour accéder aux champs custom du callback jwt().
 
-export async function getSanctumToken(): Promise<string> {
+async function getSanctumToken(): Promise<string> {
     const session = await auth();
     if (!session) throw new Error("Non authentifié.");
     if (!session.sanctumToken) throw new Error("Session invalide. Veuillez vous reconnecter.");

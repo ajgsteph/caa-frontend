@@ -5,10 +5,10 @@ import { artworkKeys } from "../helpers/artwork-keys";
 import { artworksApi } from "../api/artworks.api";
 import { useMutation } from "@tanstack/react-query";
 
-function buildFormData(values: ArtworkFormValues, image?: File | null): FormData {
+function buildFormData(values: Partial<ArtworkFormValues>, image?: File | null): FormData {
     const fd = new FormData();
-    fd.append("title", values.title);
-    fd.append("type", values.type);
+    if (values.title) fd.append("title", values.title);
+    if (values.type) fd.append("type", values.type);
     if (values.technique) fd.append("technique", values.technique);
     if (values.dimensions) fd.append("dimensions", values.dimensions);
     if (values.year) fd.append("year", String(values.year));
@@ -37,18 +37,8 @@ export function useUpdateArtwork(id: number) {
     const qc = useQueryClient();
 
     return useMutation({
-        mutationFn: ({ values, image }: { values: Partial<ArtworkFormValues>; image?: File | null }) => {
-            const fd = new FormData();
-            if (values.title) fd.append("title", values.title);
-            if (values.type) fd.append("type", values.type);
-            if (values.technique) fd.append("technique", values.technique);
-            if (values.dimensions) fd.append("dimensions", values.dimensions);
-            if (values.year) fd.append("year", String(values.year));
-            if (values.description) fd.append("description", values.description);
-            if (values.signature) fd.append("signature", values.signature);
-            if (image) fd.append("image", image);
-            return artworksApi.update(token!, id, fd);
-        },
+        mutationFn: ({ values, image }: { values: Partial<ArtworkFormValues>; image?: File | null }) =>
+            artworksApi.update(token!, id, buildFormData(values, image)),
 
         onSuccess: (data) => {
             qc.invalidateQueries({ queryKey: artworkKeys.all() });
