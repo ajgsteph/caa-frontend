@@ -10,7 +10,7 @@ export default function MyWorksPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-10">
         <PageTitle title="Mes œuvres" description="Gérez et certifiez vos créations artistiques." />
         <CustomButton
           text="Nouvelle œuvre"

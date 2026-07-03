@@ -33,7 +33,7 @@ export default function CustomButton({
   const content = (
     <>
       {icon && iconPosition === "left" && icon}
-      {text && <span className={cn("truncate", hiddenClass)}>{text}</span>}
+      {text && <span className={cn("truncate text-sm md:text-base", hiddenClass)}>{text}</span>}
       {icon && iconPosition === "right" && icon}
     </>
   );

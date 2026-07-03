@@ -9,7 +9,7 @@ export const metadata: Metadata = { title: "Mes certificats — CAA" };
 export default function CertificatesPage() {
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-10">
         <PageTitle title="Mes certificats" description="Suivez l'état de vos certificats d'authenticité émis." />
         <CustomButton
           text="Nouveau certificat"
