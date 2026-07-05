@@ -174,21 +174,21 @@ export function RegisterForm() {
               text="Suivant"
               onClick={nextStep}
               disabled={isPending}
-              className={"bg-cert-terra hover:bg-cert-terra-dark text-white" + (currentStep === 1 ? " w-full" : " w-fit")}
+              className={"bg-cert-terra hover:bg-cert-terra/80 text-white" + (currentStep === 1 ? " w-full" : " w-fit")}
             />
           ) : (
             <CustomButton 
               text={isPending ? "Création en cours…" : "Créer mon compte"}
               onClick={form.handleSubmit(onSubmit)}
               disabled={isPending}
-              className="w-fit bg-cert-terra hover:bg-cert-terra-dark text-white"
+              className="w-fit bg-cert-terra hover:bg-cert-terra/80 text-white"
             />
           )}
         </div>
 
         <p className="text-center text-sm text-muted-foreground">
           Déjà un compte ?{" "}
-          <Link href="/auth/login" className="font-medium text-cert-terra hover:text-cert-terra-dark underline underline-offset-4">
+          <Link href="/auth/login" className="font-medium text-cert-terra hover:text-cert-terra/80 underline underline-offset-4">
             Se connecter
           </Link>
         </p>

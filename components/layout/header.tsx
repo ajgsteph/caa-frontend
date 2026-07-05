@@ -8,7 +8,7 @@ import CustomButton from "@/components/custom-ui/custom-button";
 import { useSession } from "next-auth/react";
 
 export function Header() {
-    const { data: session, status } = useSession();
+    const { status } = useSession();
     const isLoading = status === "loading";
     const isConnected = status === "authenticated";
 

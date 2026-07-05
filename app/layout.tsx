@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Raleway } from "next/font/google";
+import { Geist, Geist_Mono, Raleway, Outfit } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
 
-const raleway = Raleway({ subsets: ['latin'], variable: '--font-sans' });
+// const raleway = Raleway({ subsets: ['latin'], variable: '--font-sans' });
+
+const outfit = Outfit({ subsets: ['latin'], variable: '--font-sans' });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +33,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", raleway.variable)}
+      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", outfit.variable)}
     >
       <body className="min-h-full flex flex-col">
         <SessionProvider session={session}>

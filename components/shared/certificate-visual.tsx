@@ -43,7 +43,7 @@ export function CertificateVisual() {
 
             {/* Tampon flottant */}
             <div className="absolute -top-2 -right-2 text-foreground rotate-12 z-10 bg-background rounded-full">
-                <Image src="/icons/favicon-certifa.png" alt="Logo" className="w-16 h-16" width={64} height={64} />
+                <Image src="/icons/favicon-certifa-noir.png" alt="Logo" className="w-16 h-16" width={64} height={64} />
             </div>
         </div>
     );
