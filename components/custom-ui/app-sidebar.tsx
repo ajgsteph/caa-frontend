@@ -24,6 +24,7 @@ import {
     SidebarMenuButton,
     SidebarMenuSub,
     SidebarMenuSubItem,
+    SidebarMenuSubButton,
 } from "@/components/ui/sidebar"
 import {
     Collapsible,
@@ -82,7 +83,7 @@ const data: SidebarData = {
         },
         { title: "Vérification d'identité", url: "/dashboard/identity-verification", icon: ShieldCheck },
         { title: "Paiements", url: "/dashboard/payments", icon: CreditCard },
-        { title: "Statistiques", url: "/dashboard/statistics", icon: BarChart3 },
+        // { title: "Statistiques", url: "/dashboard/statistics", icon: BarChart3 },
     ],
 }
 
@@ -130,13 +131,12 @@ export function AppSidebar() {
                                                     const isSubActive = pathname === subItem.url
                                                     return (
                                                         <SidebarMenuSubItem key={subItem.title}>
-                                                            <Link
-                                                                href={subItem.url}
-                                                                className={`flex items-center gap-2 w-full rounded-none p-2 text-sm transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground ${isSubActive ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium" : "text-muted-foreground"
-                                                                    }`}
+                                                            <SidebarMenuSubButton
+                                                                isActive={isSubActive}
+                                                                render={<Link href={subItem.url} prefetch={true} />}
                                                             >
                                                                 <span>{subItem.title}</span>
-                                                            </Link>
+                                                            </SidebarMenuSubButton>
                                                         </SidebarMenuSubItem>
                                                     )
                                                 })}
@@ -150,11 +150,10 @@ export function AppSidebar() {
                                         tooltip={item.title}
                                         isActive={isActive}
                                         className={"rounded-none " + (isActive ? "bg-cert-terra/90! text-white!" : "")}
+                                        render={<Link href={item.url} prefetch={true} />}
                                     >
-                                        <Link href={item.url} className="flex items-center gap-2 w-full h-full">
-                                            {item.icon && <item.icon className="size-4" />}
-                                            <span>{item.title}</span>
-                                        </Link>
+                                        {item.icon && <item.icon className="size-4" />}
+                                        <span>{item.title}</span>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
                             )

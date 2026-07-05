@@ -9,10 +9,11 @@ export function Pricing() {
                 <div>
                     <div className="text-xs tracking-widest uppercase text-cert-terra font-semibold mb-4">Un tarif simple</div>
                     <h2 className="text-4xl md:text-5xl font-semibold tracking-wide mb-6">
-                        Un seul prix. Aucune surprise, <em className="text-cert-terra">aucun abonnement</em>.
+                        Un seul prix. Simple, direct.
                     </h2>
                     <p className="text-lg text-muted-foreground max-w-md">
-                        Vous payez uniquement quand vous certifiez. Pas de frais cachés, pas d'engagement mensuel. Pensé pour les réalités des artistes en Afrique.
+                        Vous payez uniquement quand vous certifiez. Pas de frais cachés, pas d'engagement.
+                        Un modèle pensé pour les artistes.
                     </p>
                 </div>
 
@@ -43,7 +44,7 @@ export function Pricing() {
                             className="w-full mb-8 text-cert-terra" />
 
                         <div className="pt-6 border-t border-dashed border-border/50 flex flex-wrap gap-2 justify-center">
-                            {['Orange Money', 'MTN MoMo', 'Carte bancaire'].map((method) => (
+                            {['MTN MoMo', 'Carte bancaire'].map((method) => (
                                 <span key={method} className="text-xs px-3 py-2 bg-gray-900 border border-border/50 text-white rounded-none">
                                     {method}
                                 </span>

@@ -24,7 +24,7 @@ export function Benefits() {
                     Une garantie des deux côtés
                 </div>
                 <h2 className="text-4xl md:text-5xl font-semibold tracking-wide max-w-2xl mb-16">
-                    Un pont de confiance entre <em className="text-cert-terra">l'artiste</em> et <em className="text-cert-terra">l'acheteur</em>.
+                    Un pont de confiance entre <em className="">l'artiste</em> et <em className="">l'acheteur</em>.
                 </h2>
 
                 <div className="grid md:grid-cols-2 gap-10">
@@ -37,7 +37,7 @@ export function Benefits() {
                             <ul className="space-y-4">
                                 {artistBenefits.map((benefit, i) => (
                                     <li key={i} className="flex gap-4 text-sm leading-relaxed text-background/80">
-                                        <span className="flex-shrink-0 w-4 h-4 mt-1 bg-cert-terra" style={{ clipPath: 'polygon(0 50%, 40% 100%, 100% 0, 40% 75%)' }} />
+                                        <span className="flex-shrink-0 w-4 h-4 mt-1 bg-white" style={{ clipPath: 'polygon(0 50%, 40% 100%, 100% 0, 40% 75%)' }} />
                                         {benefit}
                                     </li>
                                 ))}
@@ -54,7 +54,7 @@ export function Benefits() {
                             <ul className="space-y-4">
                                 {buyerBenefits.map((benefit, i) => (
                                     <li key={i} className="flex gap-4 text-sm leading-relaxed text-background/80">
-                                        <span className="flex-shrink-0 w-4 h-4 mt-1 bg-cert-terra" style={{ clipPath: 'polygon(0 50%, 40% 100%, 100% 0, 40% 75%)' }} />
+                                        <span className="flex-shrink-0 w-4 h-4 mt-1 bg-white" style={{ clipPath: 'polygon(0 50%, 40% 100%, 100% 0, 40% 75%)' }} />
                                         {benefit}
                                     </li>
                                 ))}
