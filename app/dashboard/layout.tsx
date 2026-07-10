@@ -52,7 +52,7 @@ export default async function DashboardLayout({
                                 {session.user?.firstName.substring(0, 1).toUpperCase() + session.user?.lastName.substring(0, 1).toUpperCase()}
                               </AvatarFallback>
                             </Avatar>
-                            <ChevronsUpDown className="ml-auto size-4" />
+                          {/* ─── VERIFICATION ALERT ───  <ChevronsUpDown className="ml-auto size-4" />*/} 
                           </div>
                         </DropdownMenuTrigger>
 
